@@ -17,7 +17,6 @@ public class Fornecedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "nome", length = 100)

@@ -3,6 +3,8 @@ package br.edu.famper.apicontroleestoque.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "produto")
 @Getter
@@ -14,7 +16,6 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "codigo", length = 100)
@@ -34,8 +35,12 @@ public class Produto {
     private Categoria categoria;
 
     @ManyToMany
-    @JoinColumn(name = "fornecedor_id")
-    private Fornecedor fornecedor;
+    @JoinTable(name = "produto_fornecedor",
+    joinColumns = @JoinColumn(name = "produto_id"),
+    inverseJoinColumns = @JoinColumn(name = "fornecedor_id")
+    )
+    private Set<Fornecedor> fornecedor;
+
 
 
 

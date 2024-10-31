@@ -16,7 +16,6 @@ public class SaidaProduto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
 
     @Column(name = "codigo", length = 150)
