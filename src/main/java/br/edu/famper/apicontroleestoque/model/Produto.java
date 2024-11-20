@@ -7,16 +7,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "produto")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of ="id")
-public class Produto {
+@Data
 
+public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     @Column(name = "codigo", length = 100)
     private String codigo;
@@ -31,7 +27,7 @@ public class Produto {
     private String modelo;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
     @ManyToMany

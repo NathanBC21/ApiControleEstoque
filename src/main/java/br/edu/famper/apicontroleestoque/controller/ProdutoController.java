@@ -64,6 +64,17 @@ public class ProdutoController {
     )
     public Produto createProduto(@RequestBody ProdutoDto produtoDto) throws ResourceNotFoundException {
         log.info("Cadastro produto: {}", produtoDto);
+
+        if (produtoDto.getCategoriaId() == null) {
+            throw new ResourceNotFoundException("O campo 'categoriaId' é obrigatório.");
+        }
+        if (produtoDto.getFornecedorIds() == null || produtoDto.getFornecedorIds().isEmpty()) {
+            throw new ResourceNotFoundException("É necessário informar pelo menos um fornecedr.");
+        }
+
+        Produto produtoSalvo = produtoService.saveProduto(produtoDto);
+        log.info("Produto salvo com sucesso: {}", produtoSalvo);
+
         return produtoService.saveProduto(produtoDto);
     }
 
@@ -73,6 +84,17 @@ public class ProdutoController {
     )
     public ResponseEntity<ProdutoDto> updateProduto(@PathVariable(name = "id") Long id,@RequestBody ProdutoDto produtoDto) throws ResourceNotFoundException {
        log.info("Atualizando produto: {}", produtoDto);
+
+       if (produtoDto.getCategoriaId() == null) {
+           throw new ResourceNotFoundException("O campo 'categoriaId' é obrigatório.");
+       }
+       if (produtoDto.getFornecedorIds() == null || produtoDto.getFornecedorIds().isEmpty()) {
+           throw new ResourceNotFoundException("É necessário informar pelo menos um fornecedor.");
+       }
+
+       ProdutoDto produtoAtualizado = produtoService.editProduto(id, produtoDto);
+       log.info("Produto modificado com sucesso: {}", produtoAtualizado);
+
        return ResponseEntity.ok(produtoService.editProduto(id,produtoDto));
     }
 

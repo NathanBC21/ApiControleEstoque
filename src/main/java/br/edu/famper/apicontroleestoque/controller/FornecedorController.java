@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/api/fornecdor")
 @RequiredArgsConstructor
 @Slf4j
-@Tag(name = "FoFornecedor",
+@Tag(name = "Fornecedor",
         description = "Operation for suppliers")
 public class FornecedorController {
 
@@ -75,6 +75,11 @@ public class FornecedorController {
         log.info("Atualizando fornecedor: {}", fornecedorDto);
         return ResponseEntity.ok(fornecedorService.editFornecedor(id, fornecedorDto));
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Remove supplier",
+            description = "Remove a supplier in database"
+    )
 
     public Map<String, Boolean> deleteFornecedor(@PathVariable(name = "id") Long id) throws Exception {
         log.info("Deletando fornecedor: {}", id);

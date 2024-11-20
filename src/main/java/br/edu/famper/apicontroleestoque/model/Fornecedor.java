@@ -8,15 +8,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "fornecedor")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of = "id")
-public class Fornecedor {
+@Data
 
+public class Fornecedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "nome", length = 100)

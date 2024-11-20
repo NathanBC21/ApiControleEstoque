@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class ProdutoDto {
+
     @Schema(description = "Codigo do produto",
             example = "ER123456789PJ",
             title = "codigo",
@@ -37,5 +38,16 @@ public class ProdutoDto {
             title = "modelo",
             maxLength = 50)
     private String modelo;
+
+    @Schema(description = "Identificação da categoria",
+            example = "1",
+            title = "catgoria_id")
+    private Long categoriaId;
+
+    @Schema(description = "Identificação do fornecedor",
+            example = "1",
+            title = "fornecedor_id")
+    private Set<Long> fornecedorIds;
+
 
 }

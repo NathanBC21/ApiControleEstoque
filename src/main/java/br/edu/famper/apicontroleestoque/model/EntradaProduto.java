@@ -7,15 +7,12 @@ import java.util.Date;
 
 @Entity
 @Table(name = "EntradaProduto")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of = "id")
-public class EntradaProduto {
+@Data
 
+public class EntradaProduto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "entradaProd_id")
     private long id;
 
     @Column(name = "codigo", length = 150)
