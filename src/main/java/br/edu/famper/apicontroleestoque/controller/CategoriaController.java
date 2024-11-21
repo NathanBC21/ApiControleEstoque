@@ -65,7 +65,7 @@ public class CategoriaController {
     description = "Save a category in database"
     )
     public Categoria createCategoria(@RequestBody CategoriaDto categoriaDto) throws ResourceNotFoundException {
-        log.info("Buscando categoria: {}", categoriaDto);
+        log.info("Cadastro categoria: {}", categoriaDto);
         return categoriaService.saveCategoria(categoriaDto);
     }
 
